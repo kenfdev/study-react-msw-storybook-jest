@@ -1,7 +1,11 @@
 import { FC, useEffect, useState } from 'react';
 
+type SubmitValue = {
+  option: string;
+};
+
 type Props = {
-  onSubmit: (data: any) => void;
+  onSubmit: (data: SubmitValue) => void;
 };
 
 type Option = {
@@ -20,7 +24,7 @@ export const Form: FC<Props> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    onSubmit(Object.fromEntries(formData));
+    onSubmit(Object.fromEntries(formData) as SubmitValue);
   };
   return (
     <form onSubmit={handleSubmit}>

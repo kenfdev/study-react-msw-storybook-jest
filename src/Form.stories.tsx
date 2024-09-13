@@ -4,26 +4,29 @@ import { userEvent, waitFor, within, expect, fn } from '@storybook/test';
 
 import { Form } from './Form';
 
+export const mockHandlers = [
+  http.get('/api/options', () => {
+    return HttpResponse.json({
+      options: [
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+        { value: '3', label: 'Option 3' },
+      ],
+    });
+  }),
+];
+
 const meta: Meta<typeof Form> = {
   component: Form,
   parameters: {
     msw: {
-      handlers: [
-        http.get('/api/options', () => {
-          return HttpResponse.json({
-            options: [
-              { value: '1', label: 'Option 1' },
-              { value: '2', label: 'Option 2' },
-              { value: '3', label: 'Option 3' },
-            ],
-          });
-        }),
-      ],
+      handlers: mockHandlers,
     },
   },
   args: {
     onSubmit: fn(),
   },
+  excludeStories: ['mockHandlers'],
 };
 
 export default meta;
