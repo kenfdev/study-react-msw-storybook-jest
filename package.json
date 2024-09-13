@@ -34,6 +34,8 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "eslint-plugin-storybook": "^0.8.0",
     "globals": "^15.9.0",
+    "msw": "^2.4.5",
+    "msw-storybook-addon": "^2.0.3",
     "storybook": "^8.3.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
@@ -42,6 +44,11 @@
   "eslintConfig": {
     "extends": [
       "plugin:storybook/recommended"
+    ]
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
     ]
   }
 }
